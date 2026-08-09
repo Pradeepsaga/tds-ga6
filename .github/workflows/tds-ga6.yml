@@ -12,11 +12,12 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: Install Playwright
         run: |
           npm init -y
+          npm pkg set type=commonjs
           npm install playwright
           npx playwright install --with-deps chromium
 
