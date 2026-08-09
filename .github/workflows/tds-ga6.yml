@@ -4,6 +4,9 @@ on:
   push:
   workflow_dispatch:
 
+env:
+  PLAYWRIGHT_BROWSERS_PATH: '0'
+
 jobs:
   scrape:
     runs-on: ubuntu-latest
@@ -20,6 +23,8 @@ jobs:
           npm pkg set type=commonjs
           npm install playwright
           npx playwright install --with-deps chromium
+          echo "--- installed browsers ---"
+          ls -R node_modules/playwright-core/.local-browsers 2>/dev/null | head -20 || true
 
       - name: Scrape table sums for 22f3000346@ds.study.iitm.ac.in
         run: node scrape.js
