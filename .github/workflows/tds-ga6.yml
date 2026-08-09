@@ -27,4 +27,4 @@ jobs:
           ls -R node_modules/playwright-core/.local-browsers 2>/dev/null | head -20 || true
 
       - name: Scrape table sums for 22f3000346@ds.study.iitm.ac.in
-        run: node scrape.js
+         run: node .github/workflows/scrape.js
